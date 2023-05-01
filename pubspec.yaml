@@ -1,0 +1,31 @@
+name: illustration
+description: A sample command-line application.
+version: 1.0.0
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5
+  sized_context: ^1.0.0+4
+  rnd: ^0.2.0
+  flutter_animate: ^1.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+
+flutter:
+  assets:
+    - packages/illustration/assets/images/_common/
+    - packages/illustration/assets/images/_common/texture/
+    - packages/illustration/assets/images/chichen_itza/
+    - packages/illustration/assets/images/christ_the_redeemer/
+    - packages/illustration/assets/images/colosseum/
+    - packages/illustration/assets/images/great_wall_of_china/
+    - packages/illustration/assets/images/machu_picchu/
+    - packages/illustration/assets/images/petra/
+    - packages/illustration/assets/images/pyramids/
+    - packages/illustration/assets/images/taj_mahal/
