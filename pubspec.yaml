@@ -19,13 +19,13 @@ dev_dependencies:
 
 flutter:
   assets:
-    - packages/illustration/assets/images/_common/
-    - packages/illustration/assets/images/_common/texture/
-    - packages/illustration/assets/images/chichen_itza/
-    - packages/illustration/assets/images/christ_the_redeemer/
-    - packages/illustration/assets/images/colosseum/
-    - packages/illustration/assets/images/great_wall_of_china/
-    - packages/illustration/assets/images/machu_picchu/
-    - packages/illustration/assets/images/petra/
-    - packages/illustration/assets/images/pyramids/
-    - packages/illustration/assets/images/taj_mahal/
+    - assets/images/_common/
+    - assets/images/_common/texture/
+    - assets/images/chichen_itza/
+    - assets/images/christ_the_redeemer/
+    - assets/images/colosseum/
+    - assets/images/great_wall_of_china/
+    - assets/images/machu_picchu/
+    - assets/images/petra/
+    - assets/images/pyramids/
+    - assets/images/taj_mahal/

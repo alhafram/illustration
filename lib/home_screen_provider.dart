@@ -35,8 +35,7 @@ class IllustrationPieceProvider extends ChangeNotifier {
   ui.Image? uiImage;
 
   Future<void> load(String fileName) async {
-    var fullName = "packages/illustration/$fileName";
-    var img = await rootBundle.load(fullName);
+    var img = await rootBundle.load('packages/illustration/$fileName');
     var uiImage = await decodeImageFromList(img.buffer.asUint8List());
     this.uiImage = uiImage;
     aspectRatio = uiImage.width / uiImage.height;
