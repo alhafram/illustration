@@ -13,6 +13,7 @@ class IllustrationBackgroundViewModel {
 }
 
 class IllustrationMiddlegroundViewModel {
+  // Move params to common VM
   final Offset? offset; // Translate
 
   final Clip? clipBehavior; // ClipRect
@@ -79,6 +80,7 @@ class IllustrationTextureViewModel {
 
 class IllustrationViewModel {
   final int id;
+  final Type pageType;
   final Color bgColor;
   final int cloudSeed;
   final IllustrationBackgroundViewModel backgroundViewModel;
@@ -87,9 +89,20 @@ class IllustrationViewModel {
 
   IllustrationViewModel(
       {required this.id,
+      required this.pageType,
       required this.bgColor,
       required this.cloudSeed,
       required this.backgroundViewModel,
       required this.middlegroundViewModel,
       required this.illustrationForegroundViewModel});
+}
+
+enum Type {
+  fallAsleep,
+  feelBetter,
+  reduceStress,
+  calmDown,
+  feelRelaxed,
+  beCreative,
+  anotherType
 }
