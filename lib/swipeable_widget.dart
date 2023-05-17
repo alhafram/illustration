@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:illustration/home_screen.dart';
 
-class SwipeableWidget extends StatefulWidget {
-  SwipeableWidget({Key? key}) : super(key: key);
+class HomeScreenSwipeableWidget extends StatefulWidget {
+  HomeScreenSwipeableWidget({Key? key}) : super(key: key);
 
   @override
-  State<SwipeableWidget> createState() => SwipeableWidgetState();
+  State<HomeScreenSwipeableWidget> createState() =>
+      HomeScreenSwipeableWidgetState();
 }
 
-class SwipeableWidgetState extends State<SwipeableWidget>
+class HomeScreenSwipeableWidgetState extends State<HomeScreenSwipeableWidget>
     with SingleTickerProviderStateMixin {
   late final VerticalSwipeController _swipeController =
       VerticalSwipeController(this, _showDetailsPage);
 
-  void _showDetailsPage() async {
+  void _showDetailsPage() {
     context.push('/details');
-    await Future.delayed(100.ms);
   }
 
   @override

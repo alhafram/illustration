@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:illustration/router.dart';
+import 'package:go_router/go_router.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            ),
-            onPressed: () => {appRouter.pop()},
-            child: Text('Main button')));
+    return GestureDetector(
+        child: Scaffold(body: Center(child: Text('Some details'))),
+        onVerticalDragUpdate: (details) {
+          int sensitivity = 8;
+          if (details.delta.dy > sensitivity) {
+            context.pop();
+          }
+        });
   }
 }

@@ -10,8 +10,8 @@ final appRouter = GoRouter(routes: [
         return KeyedSubtree(child: navigator);
       },
       routes: [
-        AppRoute('/home', (s) => SwipeableWidget()),
-        AppRoute('/details', (_) => const DetailsScreen(), useFade: true)
+        AppRoute('/home', (s) => HomeScreenSwipeableWidget()),
+        AppRoute('/details', (_) => DetailsScreen(), useFade: true)
       ])
 ]);
 
