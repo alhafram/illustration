@@ -27,6 +27,11 @@ class HomeScreenProvider extends ChangeNotifier {
   void changeCurrentId(int newId) {
     currentId = newId % viewModels.length;
     notifyListeners();
+    _dataSource.delegate.pageDidOpened(currentId);
+  }
+
+  void tapMainButton() {
+    _dataSource.delegate.pageDidTapMainButton();
   }
 }
 

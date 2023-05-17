@@ -80,7 +80,17 @@ class BaseIllustration extends StatelessWidget {
                         .middlegroundViewModel.illustrationPieceViewModel)))
       ];
     }
+    var provider = context.read<HomeScreenProvider>();
     return [
+      Positioned(
+          top: 100,
+          left: 100,
+          child: TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: provider.tapMainButton,
+              child: Text('Main button'))),
       ChangeNotifierProvider(
           create: (_) => IllustrationPieceProvider(),
           child: IllustrationPiece.withViewModel(
