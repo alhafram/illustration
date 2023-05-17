@@ -9,6 +9,6 @@ abstract class DataSource {
 }
 
 abstract class DataSourceDelegate {
-  void pageDidOpened(int id);
-  void pageDidTapMainButton();
+  void pageDidOpened(Type pageType);
+  void pageDidTapMainButton(Type pageType);
 }
