@@ -25,54 +25,48 @@ class BasePageView extends StatelessWidget {
 
   List<Widget> _buildBg(BuildContext context, Animation<double> anim) {
     return [
-      FadeColorTransition(
-          animation: anim, color: pageViewModel.backgroundViewModel.color),
+      FadeColorTransition(animation: anim, color: pageViewModel.color),
       Positioned.fill(
           child: PagerTexture.withViewModel(
-              viewModel: pageViewModel.backgroundViewModel.textureViewModel,
-              opacity: anim.drive(
-                  pageViewModel.backgroundViewModel.textureViewModel.tween))),
+              viewModel: pageViewModel.textureViewModel,
+              opacity: anim.drive(pageViewModel.textureViewModel.tween))),
       ChangeNotifierProvider(
           create: (_) => PagePieceProvider(),
           child: PagerPiece.withViewModel(
-              viewModel: pageViewModel.backgroundViewModel.pagePieceViewModel))
+              viewModel: pageViewModel.backgroundViewModel))
     ];
   }
 
   List<Widget> _buildMg(BuildContext context, Animation<double> anim) {
-    if (pageViewModel.middlegroundViewModel.offset != null) {
+    if (pageViewModel.offset != null) {
       return [
         Transform.translate(
-            offset: pageViewModel.middlegroundViewModel.offset!,
+            offset: pageViewModel.offset!,
             child: ChangeNotifierProvider(
                 create: (_) => PagePieceProvider(),
                 child: PagerPiece.withViewModel(
-                    viewModel: pageViewModel
-                        .middlegroundViewModel.pagePieceViewModel)))
+                    viewModel: pageViewModel.middlegroundViewModel)))
       ];
     }
-    if (pageViewModel.middlegroundViewModel.clipBehavior != null) {
+    if (pageViewModel.clipBehavior != null) {
       return [
         ClipRect(
-            clipBehavior: pageViewModel.middlegroundViewModel.clipBehavior!,
+            clipBehavior: pageViewModel.clipBehavior!,
             child: ChangeNotifierProvider(
                 create: (_) => PagePieceProvider(),
                 child: PagerPiece.withViewModel(
-                    viewModel: pageViewModel
-                        .middlegroundViewModel.pagePieceViewModel)))
+                    viewModel: pageViewModel.middlegroundViewModel)))
       ];
     }
-    if (pageViewModel.middlegroundViewModel.heightFactor != null &&
-        pageViewModel.middlegroundViewModel.alignment != null) {
+    if (pageViewModel.heightFactor != null && pageViewModel.alignment != null) {
       return [
         FractionallySizedBox(
-            heightFactor: pageViewModel.middlegroundViewModel.heightFactor!,
-            alignment: pageViewModel.middlegroundViewModel.alignment!,
+            heightFactor: pageViewModel.heightFactor!,
+            alignment: pageViewModel.alignment!,
             child: ChangeNotifierProvider(
                 create: (_) => PagePieceProvider(),
                 child: PagerPiece.withViewModel(
-                    viewModel: pageViewModel
-                        .middlegroundViewModel.pagePieceViewModel)))
+                    viewModel: pageViewModel.middlegroundViewModel)))
       ];
     }
     var provider = context.read<HomeScreenProvider>();
@@ -89,14 +83,13 @@ class BasePageView extends StatelessWidget {
       ChangeNotifierProvider(
           create: (_) => PagePieceProvider(),
           child: PagerPiece.withViewModel(
-              viewModel:
-                  pageViewModel.middlegroundViewModel.pagePieceViewModel))
+              viewModel: pageViewModel.middlegroundViewModel))
     ];
   }
 
   List<Widget> _buildFg(BuildContext context, Animation<double> anim) {
     var list = List<Widget>.empty(growable: true);
-    for (var viewModel in pageViewModel.pageForegroundViewModel.viewModels) {
+    for (var viewModel in pageViewModel.foregroundViewModels) {
       list.add(ChangeNotifierProvider(
           create: (_) => PagePieceProvider(),
           child: PagerPiece.withViewModel(viewModel: viewModel)));

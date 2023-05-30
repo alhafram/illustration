@@ -1,36 +1,5 @@
 import 'package:flutter/material.dart';
 
-class PageBackgroundViewModel {
-  final Color color;
-
-  final PagePieceViewModel textureViewModel;
-  final PagePieceViewModel pagePieceViewModel;
-
-  PageBackgroundViewModel(
-      {required this.color,
-      required this.textureViewModel,
-      required this.pagePieceViewModel});
-}
-
-class PageMiddlegroundViewModel {
-  // Move params to common VM
-  final Offset? offset; // Translate
-
-  final Clip? clipBehavior; // ClipRect
-
-  final double? heightFactor; // FractionallySizedBox
-  final Alignment? alignment;
-
-  final PagePieceViewModel pagePieceViewModel;
-
-  PageMiddlegroundViewModel(
-      {this.offset,
-      this.clipBehavior,
-      this.heightFactor,
-      this.alignment,
-      required this.pagePieceViewModel});
-}
-
 class PagePieceViewModel {
   final String fileName;
 
@@ -67,29 +36,41 @@ class PagePieceViewModel {
       : tween = tween ?? Tween(begin: 0, end: 1);
 }
 
-class PageForegroundViewModel {
-  final List<PagePieceViewModel> viewModels;
-
-  PageForegroundViewModel({required this.viewModels});
-}
-
 class PageViewModel {
   final int id;
   final Type pageType;
   final Color bgColor;
   final int cloudSeed;
-  final PageBackgroundViewModel backgroundViewModel;
-  final PageMiddlegroundViewModel middlegroundViewModel;
-  final PageForegroundViewModel pageForegroundViewModel;
+
+  final Color color;
+  final PagePieceViewModel textureViewModel;
+  final PagePieceViewModel backgroundViewModel;
+
+  final Offset? offset; // Translate
+
+  final Clip? clipBehavior; // ClipRect
+
+  final double? heightFactor; // FractionallySizedBox
+  final Alignment? alignment;
+
+  final PagePieceViewModel middlegroundViewModel;
+
+  final List<PagePieceViewModel> foregroundViewModels;
 
   PageViewModel(
       {required this.id,
       required this.pageType,
       required this.bgColor,
       required this.cloudSeed,
+      this.color = Colors.black,
+      required this.textureViewModel,
       required this.backgroundViewModel,
+      this.offset,
+      this.clipBehavior,
+      this.heightFactor,
+      this.alignment,
       required this.middlegroundViewModel,
-      required this.pageForegroundViewModel});
+      required this.foregroundViewModels});
 }
 
 enum Type {
