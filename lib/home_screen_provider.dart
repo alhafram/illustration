@@ -1,5 +1,5 @@
 import 'package:page_controller/components/data_source.dart';
-import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/asset_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui show Image;

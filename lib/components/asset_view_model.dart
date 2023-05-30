@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PagePieceViewModel {
+class AssetViewModel {
   final String fileName;
 
   final Alignment alignment;
@@ -18,7 +18,7 @@ class PagePieceViewModel {
   final bool flipY;
   Tween<double> tween;
 
-  PagePieceViewModel(
+  AssetViewModel(
       {required this.fileName,
       this.heightFactor = 0.0,
       this.alignment = Alignment.center,
@@ -43,8 +43,8 @@ class PageViewModel {
   final int cloudSeed;
 
   final Color color;
-  final PagePieceViewModel textureViewModel;
-  final PagePieceViewModel backgroundViewModel;
+  final AssetViewModel textureViewModel;
+  final AssetViewModel backgroundViewModel;
 
   final Offset? offset; // Translate
 
@@ -53,9 +53,9 @@ class PageViewModel {
   final double? heightFactor; // FractionallySizedBox
   final Alignment? alignment;
 
-  final PagePieceViewModel middlegroundViewModel;
+  final AssetViewModel middlegroundViewModel;
 
-  final List<PagePieceViewModel> foregroundViewModels;
+  final List<AssetViewModel> foregroundViewModels;
 
   PageViewModel(
       {required this.id,

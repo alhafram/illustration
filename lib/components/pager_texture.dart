@@ -1,4 +1,4 @@
-import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/asset_view_model.dart';
 import 'package:flutter/material.dart';
 
 class PagerTexture extends StatelessWidget {
@@ -18,8 +18,7 @@ class PagerTexture extends StatelessWidget {
   final Animation<double>? opacity;
 
   factory PagerTexture.withViewModel(
-      {required PagePieceViewModel viewModel,
-      required Animation<double> opacity}) {
+      {required AssetViewModel viewModel, required Animation<double> opacity}) {
     return PagerTexture(viewModel.fileName,
         scale: viewModel.initialScale,
         color: viewModel.color,

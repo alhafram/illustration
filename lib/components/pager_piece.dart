@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:page_controller/home_screen_provider.dart';
-import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/asset_view_model.dart';
 import 'package:page_controller/components/pager_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,7 @@ class PagerPiece extends StatelessWidget {
       this.dynamicHzOffset = 0})
       : super(key: key);
 
-  factory PagerPiece.withViewModel({required PagePieceViewModel viewModel}) {
+  factory PagerPiece.withViewModel({required AssetViewModel viewModel}) {
     return PagerPiece(
         fileName: viewModel.fileName,
         heightFactor: viewModel.heightFactor,

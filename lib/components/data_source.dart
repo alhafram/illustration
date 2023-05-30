@@ -1,4 +1,4 @@
-import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/asset_view_model.dart';
 
 abstract class DataSource {
   List<PageViewModel> viewModels = [];
