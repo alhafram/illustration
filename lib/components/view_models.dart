@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PageBackgroundViewModel {
   final Color color;
 
-  final PageTextureViewModel textureViewModel;
+  final PagePieceViewModel textureViewModel;
   final PagePieceViewModel pagePieceViewModel;
 
   PageBackgroundViewModel(
@@ -33,6 +33,7 @@ class PageMiddlegroundViewModel {
 
 class PagePieceViewModel {
   final String fileName;
+
   final Alignment alignment;
   final Offset initialOffset;
   final double initialScale;
@@ -43,9 +44,14 @@ class PagePieceViewModel {
   final double? minHeight;
   final Offset offset;
 
+  final Color? color;
+  final bool flipX;
+  final bool flipY;
+  Tween<double> tween;
+
   PagePieceViewModel(
       {required this.fileName,
-      required this.heightFactor,
+      this.heightFactor = 0.0,
       this.alignment = Alignment.center,
       this.minHeight,
       this.offset = Offset.zero,
@@ -53,29 +59,18 @@ class PagePieceViewModel {
       this.zoomAmt = 0,
       this.initialOffset = Offset.zero,
       this.initialScale = 1,
-      this.dynamicHzOffset = 0});
+      this.dynamicHzOffset = 0,
+      this.color,
+      this.flipX = false,
+      this.flipY = false,
+      Tween<double>? tween})
+      : tween = tween ?? Tween(begin: 0, end: 1);
 }
 
 class PageForegroundViewModel {
   final List<PagePieceViewModel> viewModels;
 
   PageForegroundViewModel({required this.viewModels});
-}
-
-class PageTextureViewModel {
-  final Color? color;
-  final double scale;
-  final bool flipX;
-  final bool flipY;
-  final String path;
-  final Tween<double> tween;
-
-  PageTextureViewModel(this.path,
-      {this.scale = 1,
-      this.color,
-      this.flipX = false,
-      this.flipY = false,
-      required this.tween});
 }
 
 class PageViewModel {

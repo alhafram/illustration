@@ -18,10 +18,10 @@ class PagerTexture extends StatelessWidget {
   final Animation<double>? opacity;
 
   factory PagerTexture.withViewModel(
-      {required PageTextureViewModel viewModel,
+      {required PagePieceViewModel viewModel,
       required Animation<double> opacity}) {
-    return PagerTexture(viewModel.path,
-        scale: viewModel.scale,
+    return PagerTexture(viewModel.fileName,
+        scale: viewModel.initialScale,
         color: viewModel.color,
         flipX: viewModel.flipX,
         flipY: viewModel.flipY,
