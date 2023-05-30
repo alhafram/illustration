@@ -21,7 +21,8 @@ class PagerTopView extends StatelessWidget {
           widthFactor: 1,
           heightFactor: .5,
           child: AnimatedAssets(
-              opacity: 1, cloudSeed: provider.selectedViewModel.cloudSeed))
+              opacity: 1,
+              animatedAssetSeed: provider.selectedViewModel.animatedAssetSeed))
     ]);
   }
 }

@@ -1,6 +1,6 @@
 class ImagePaths {
   static String common = 'assets/images/_common';
-  static String cloud = '$common/cloud-white.png';
+  static String animatedAsset = '$common/cloud-white.png';
 
   static String textures = '$common/texture';
 

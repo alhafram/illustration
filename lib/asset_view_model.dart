@@ -38,9 +38,9 @@ class AssetViewModel {
 
 class PageViewModel {
   final int id;
-  final Type pageType;
+  final PageType pageType;
   final Color bgColor;
-  final int cloudSeed;
+  final int animatedAssetSeed;
 
   final Color color;
   final AssetViewModel textureViewModel;
@@ -61,7 +61,7 @@ class PageViewModel {
       {required this.id,
       required this.pageType,
       required this.bgColor,
-      required this.cloudSeed,
+      required this.animatedAssetSeed,
       this.color = Colors.black,
       required this.textureViewModel,
       required this.backgroundViewModel,
@@ -73,7 +73,7 @@ class PageViewModel {
       required this.foregroundViewModels});
 }
 
-enum Type {
+enum PageType {
   fallAsleep,
   feelBetter,
   reduceStress,

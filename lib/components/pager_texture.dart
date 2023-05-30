@@ -1,4 +1,4 @@
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/asset_view_model.dart';
 import 'package:flutter/material.dart';
 
 class PagerTexture extends StatelessWidget {

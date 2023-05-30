@@ -1,12 +1,14 @@
-import 'package:page_controller/components/data_source.dart';
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/page_controller_data_source.dart';
+import 'package:page_controller/asset_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui show Image;
 
+import 'package:page_controller/page_controller_delegate.dart';
+
 class HomeScreenProvider extends ChangeNotifier {
   HomeScreenProvider(this._dataSource);
-  final DataSource _dataSource;
+  final PageControllerDataSource _dataSource;
 
   int currentId = 0;
 
@@ -39,7 +41,7 @@ class HomeScreenProvider extends ChangeNotifier {
     _dataSource.delegate?.pageDidOpenDetailScreen(selectedViewModel.pageType);
   }
 
-  void setDelegate(DataSourceDelegate delegate) {
+  void setDelegate(PageControllerDelegate delegate) {
     _dataSource.delegate = delegate;
   }
 }

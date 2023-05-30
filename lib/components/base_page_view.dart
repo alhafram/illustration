@@ -1,7 +1,7 @@
 import 'package:page_controller/home_screen_provider.dart';
 import 'package:page_controller/components/fade_color_transition.dart';
 import 'package:page_controller/components/pager_piece.dart';
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/asset_view_model.dart';
 import 'package:page_controller/components/pager_texture.dart';
 import 'package:page_controller/components/pager_builder.dart';
 import 'package:page_controller/components/page_config.dart';

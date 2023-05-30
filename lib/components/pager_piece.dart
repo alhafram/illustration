@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:page_controller/home_screen_provider.dart';
-import 'package:page_controller/components/asset_view_model.dart';
+import 'package:page_controller/asset_view_model.dart';
 import 'package:page_controller/components/pager_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
