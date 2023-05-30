@@ -1,5 +1,5 @@
-import 'package:illustration/illustrations/data_source.dart';
-import 'package:illustration/illustrations/view_models.dart';
+import 'package:page_controller/components/data_source.dart';
+import 'package:page_controller/components/view_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui show Image;
@@ -12,7 +12,7 @@ class HomeScreenProvider extends ChangeNotifier {
 
   bool isSelected(int id) => id == currentId;
 
-  List<IllustrationViewModel> get viewModels {
+  List<PageViewModel> get viewModels {
     return _dataSource.viewModels;
   }
 
@@ -20,27 +20,36 @@ class HomeScreenProvider extends ChangeNotifier {
     return viewModels.length;
   }
 
-  IllustrationViewModel get selectedViewModel {
+  PageViewModel get selectedViewModel {
     return viewModels[currentId];
   }
 
   void changeCurrentId(int newId) {
     currentId = newId % viewModels.length;
     notifyListeners();
-    _dataSource.delegate.pageDidOpened(selectedViewModel.pageType);
+    _dataSource.delegate?.pageDidOpened(selectedViewModel.pageType);
   }
 
   void tapMainButton() {
-    _dataSource.delegate.pageDidTapMainButton(selectedViewModel.pageType);
+    _dataSource.delegate?.pageDidTapMainButton(selectedViewModel.pageType);
+  }
+
+  void openDetails() {
+    print('OPEN DETAILS');
+    _dataSource.delegate?.pageDidOpenDetailScreen(selectedViewModel.pageType);
+  }
+
+  void setDelegate(DataSourceDelegate delegate) {
+    _dataSource.delegate = delegate;
   }
 }
 
-class IllustrationPieceProvider extends ChangeNotifier {
+class PagePieceProvider extends ChangeNotifier {
   double? aspectRatio;
   ui.Image? uiImage;
 
   Future<void> load(String fileName) async {
-    var img = await rootBundle.load('packages/illustration/$fileName');
+    var img = await rootBundle.load('packages/page_controller/$fileName');
     var uiImage = await decodeImageFromList(img.buffer.asUint8List());
     this.uiImage = uiImage;
     aspectRatio = uiImage.width / uiImage.height;

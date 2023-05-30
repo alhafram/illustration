@@ -1,14 +1,14 @@
-import 'package:illustration/base_components/bottom_center.dart';
+import 'package:page_controller/base_components/bottom_center.dart';
 import 'package:flutter/material.dart';
-import 'package:illustration/home_screen.dart';
-import 'package:illustration/home_screen_provider.dart';
-import 'package:illustration/illustrations/base_illustration.dart';
-import 'package:illustration/illustrations/illustration_config.dart';
+import 'package:page_controller/pager_view.dart';
+import 'package:page_controller/home_screen_provider.dart';
+import 'package:page_controller/components/base_page_view.dart';
+import 'package:page_controller/components/page_config.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class IllustrationForegroundsView extends StatelessWidget {
-  IllustrationForegroundsView({super.key, required this.swipeController});
+class PagerForegroundView extends StatelessWidget {
+  PagerForegroundView({super.key, required this.swipeController});
 
   final VerticalSwipeController swipeController;
 
@@ -44,30 +44,17 @@ class IllustrationForegroundsView extends StatelessWidget {
           child: buildSwipeableBgGradient(gradientColor.withOpacity(.65))),
       ...provider.viewModels.map((e) {
         return swipeController.buildListener(builder: (swipeAmt, _, child) {
-          final config = IllustrationConfig.fg(
-            isShowing: provider.isSelected(e.id),
-            // zoom: .4 * (_swipeOverride ?? swipeAmt),
-            zoom: .4 * swipeAmt,
-          );
+          final config = PageConfig.fg(
+              isShowing: provider.isSelected(e.id), zoom: .4 * swipeAmt);
           return Animate(
               effects: const [FadeEffect()],
               onPlay: _handleFadeAnimInit,
               child: IgnorePointer(
-                  child: BaseIllustration(
-                      illustrationViewModel: provider.viewModels[e.id],
+                  child: BasePageView(
+                      pageViewModel: provider.viewModels[e.id],
                       config: config)));
         });
       }).toList(),
-      // ...provider.viewModels.map((e) {
-      //   final config = IllustrationConfig.fg(
-      //       isShowing: provider.isSelected(e.id), zoom: .4);
-      //   return Animate(
-      //       effects: const [FadeEffect()],
-      //       child: IgnorePointer(
-      //           child: BaseIllustration(
-      //               illustrationViewModel: provider.viewModels[e.id],
-      //               config: config)));
-      // }).toList(),
       BottomCenter(child: buildSwipeableBgGradient(gradientColor))
     ]);
   }

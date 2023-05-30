@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'package:illustration/assets.dart';
-import 'package:illustration/illustrations/context_utils.dart';
+import 'package:page_controller/assets.dart';
+import 'package:page_controller/components/context_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:rnd/rnd.dart';
 import 'package:sized_context/sized_context.dart';
 export 'package:rnd/rnd.dart';
 
-class AnimatedClouds extends StatefulWidget {
-  const AnimatedClouds(
+class AnimatedAssets extends StatefulWidget {
+  const AnimatedAssets(
       {Key? key,
       this.enableAnimations = true,
       required this.opacity,
@@ -19,10 +19,10 @@ class AnimatedClouds extends StatefulWidget {
   final int cloudSeed;
   final double cloudSize;
   @override
-  State<AnimatedClouds> createState() => _AnimatedCloudsState();
+  State<AnimatedAssets> createState() => AnimatedAssetsState();
 }
 
-class _AnimatedCloudsState extends State<AnimatedClouds>
+class AnimatedAssetsState extends State<AnimatedAssets>
     with SingleTickerProviderStateMixin {
   late List<_Cloud> _clouds = [];
   List<_Cloud> _oldClouds = [];
@@ -45,7 +45,7 @@ class _AnimatedCloudsState extends State<AnimatedClouds>
   }
 
   @override
-  void didUpdateWidget(covariant AnimatedClouds oldWidget) {
+  void didUpdateWidget(covariant AnimatedAssets oldWidget) {
     if (oldWidget.hashCode != widget.hashCode) {
       _oldClouds = _clouds;
       _clouds = _getClouds();
@@ -129,7 +129,7 @@ class _Cloud extends StatelessWidget {
       scaleX: scale * (flipX ? -1 : 1),
       scaleY: scale * (flipY ? -1 : 1),
       child: Image.asset(ImagePaths.cloud,
-          package: 'illustration',
+          package: 'page_controller',
           opacity: AlwaysStoppedAnimation(.4 * opacity),
           width: size * scale,
           fit: BoxFit.fitWidth));

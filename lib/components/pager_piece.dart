@@ -1,13 +1,13 @@
 import 'dart:math';
-import 'package:illustration/home_screen_provider.dart';
-import 'package:illustration/illustrations/view_models.dart';
-import 'package:illustration/illustrations/illustration_builder.dart';
+import 'package:page_controller/home_screen_provider.dart';
+import 'package:page_controller/components/view_models.dart';
+import 'package:page_controller/components/pager_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-class IllustrationPiece extends StatelessWidget {
-  const IllustrationPiece(
+class PagerPiece extends StatelessWidget {
+  const PagerPiece(
       {Key? key,
       required this.fileName,
       required this.heightFactor,
@@ -21,9 +21,8 @@ class IllustrationPiece extends StatelessWidget {
       this.dynamicHzOffset = 0})
       : super(key: key);
 
-  factory IllustrationPiece.withViewModel(
-      {required IllustrationPieceViewModel viewModel}) {
-    return IllustrationPiece(
+  factory PagerPiece.withViewModel({required PagePieceViewModel viewModel}) {
+    return PagerPiece(
         fileName: viewModel.fileName,
         heightFactor: viewModel.heightFactor,
         alignment: viewModel.alignment,
@@ -66,8 +65,8 @@ class IllustrationPiece extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final builder = context.watch<IllustrationBuilderState>();
-    final ipProvider = context.read<IllustrationPieceProvider>();
+    final builder = context.watch<PagerBuilderState>();
+    final ipProvider = context.read<PagePieceProvider>();
     final imgPath = fileName;
     // Dynamically determine the aspect ratio of the image, so we can more easily position it
     if (ipProvider.aspectRatio == null) {
@@ -84,7 +83,7 @@ class IllustrationPiece extends StatelessWidget {
               final curvedAnim = Curves.easeOut.transform(anim.value);
               final config = builder.widget.config;
               Widget img = Image.asset(imgPath,
-                  package: 'illustration',
+                  package: 'page_controller',
                   opacity: anim,
                   fit: BoxFit.fitHeight);
               // Add overflow box so image doesn't get clipped as we translate it around

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:illustration/home_screen.dart';
+import 'package:page_controller/pager_view.dart';
+import 'package:page_controller/home_screen_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreenSwipeableWidget extends StatefulWidget {
   HomeScreenSwipeableWidget({Key? key}) : super(key: key);
@@ -16,12 +17,13 @@ class HomeScreenSwipeableWidgetState extends State<HomeScreenSwipeableWidget>
       VerticalSwipeController(this, _showDetailsPage);
 
   void _showDetailsPage() {
-    context.push('/details');
+    var provider = context.read<HomeScreenProvider>();
+    provider.openDetails();
   }
 
   @override
   Widget build(BuildContext context) {
     return _swipeController
-        .wrapGestureDetector(HomeScreen(swipeController: _swipeController));
+        .wrapGestureDetector(PagerWidget(swipeController: _swipeController));
   }
 }

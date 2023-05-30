@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class IllustrationBackgroundViewModel {
+class PageBackgroundViewModel {
   final Color color;
 
-  final IllustrationTextureViewModel textureViewModel;
-  final IllustrationPieceViewModel illustrationPieceViewModel;
+  final PageTextureViewModel textureViewModel;
+  final PagePieceViewModel pagePieceViewModel;
 
-  IllustrationBackgroundViewModel(
+  PageBackgroundViewModel(
       {required this.color,
       required this.textureViewModel,
-      required this.illustrationPieceViewModel});
+      required this.pagePieceViewModel});
 }
 
-class IllustrationMiddlegroundViewModel {
+class PageMiddlegroundViewModel {
   // Move params to common VM
   final Offset? offset; // Translate
 
@@ -21,17 +21,17 @@ class IllustrationMiddlegroundViewModel {
   final double? heightFactor; // FractionallySizedBox
   final Alignment? alignment;
 
-  final IllustrationPieceViewModel illustrationPieceViewModel;
+  final PagePieceViewModel pagePieceViewModel;
 
-  IllustrationMiddlegroundViewModel(
+  PageMiddlegroundViewModel(
       {this.offset,
       this.clipBehavior,
       this.heightFactor,
       this.alignment,
-      required this.illustrationPieceViewModel});
+      required this.pagePieceViewModel});
 }
 
-class IllustrationPieceViewModel {
+class PagePieceViewModel {
   final String fileName;
   final Alignment alignment;
   final Offset initialOffset;
@@ -43,7 +43,7 @@ class IllustrationPieceViewModel {
   final double? minHeight;
   final Offset offset;
 
-  IllustrationPieceViewModel(
+  PagePieceViewModel(
       {required this.fileName,
       required this.heightFactor,
       this.alignment = Alignment.center,
@@ -56,13 +56,13 @@ class IllustrationPieceViewModel {
       this.dynamicHzOffset = 0});
 }
 
-class IllustrationForegroundViewModel {
-  final List<IllustrationPieceViewModel> viewModels;
+class PageForegroundViewModel {
+  final List<PagePieceViewModel> viewModels;
 
-  IllustrationForegroundViewModel({required this.viewModels});
+  PageForegroundViewModel({required this.viewModels});
 }
 
-class IllustrationTextureViewModel {
+class PageTextureViewModel {
   final Color? color;
   final double scale;
   final bool flipX;
@@ -70,7 +70,7 @@ class IllustrationTextureViewModel {
   final String path;
   final Tween<double> tween;
 
-  IllustrationTextureViewModel(this.path,
+  PageTextureViewModel(this.path,
       {this.scale = 1,
       this.color,
       this.flipX = false,
@@ -78,23 +78,23 @@ class IllustrationTextureViewModel {
       required this.tween});
 }
 
-class IllustrationViewModel {
+class PageViewModel {
   final int id;
   final Type pageType;
   final Color bgColor;
   final int cloudSeed;
-  final IllustrationBackgroundViewModel backgroundViewModel;
-  final IllustrationMiddlegroundViewModel middlegroundViewModel;
-  final IllustrationForegroundViewModel illustrationForegroundViewModel;
+  final PageBackgroundViewModel backgroundViewModel;
+  final PageMiddlegroundViewModel middlegroundViewModel;
+  final PageForegroundViewModel pageForegroundViewModel;
 
-  IllustrationViewModel(
+  PageViewModel(
       {required this.id,
       required this.pageType,
       required this.bgColor,
       required this.cloudSeed,
       required this.backgroundViewModel,
       required this.middlegroundViewModel,
-      required this.illustrationForegroundViewModel});
+      required this.pageForegroundViewModel});
 }
 
 enum Type {

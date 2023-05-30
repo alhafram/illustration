@@ -1,9 +1,9 @@
-import 'package:illustration/illustrations/illustration_config.dart';
+import 'package:page_controller/components/page_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class IllustrationBuilder extends StatefulWidget {
-  const IllustrationBuilder({
+class PagerBuilder extends StatefulWidget {
+  const PagerBuilder({
     Key? key,
     required this.config,
     required this.fgBuilder,
@@ -16,13 +16,13 @@ class IllustrationBuilder extends StatefulWidget {
       mgBuilder;
   final List<Widget> Function(BuildContext context, Animation<double> animation)
       bgBuilder;
-  final IllustrationConfig config;
+  final PageConfig config;
 
   @override
-  State<IllustrationBuilder> createState() => IllustrationBuilderState();
+  State<PagerBuilder> createState() => PagerBuilderState();
 }
 
-class IllustrationBuilderState extends State<IllustrationBuilder>
+class PagerBuilderState extends State<PagerBuilder>
     with SingleTickerProviderStateMixin {
   late final anim = AnimationController(
       vsync: this, duration: const Duration(milliseconds: 600) * .75)
@@ -42,7 +42,7 @@ class IllustrationBuilderState extends State<IllustrationBuilder>
   }
 
   @override
-  void didUpdateWidget(covariant IllustrationBuilder oldWidget) {
+  void didUpdateWidget(covariant PagerBuilder oldWidget) {
     if (isShowing != oldWidget.config.isShowing) {
       isShowing ? anim.forward(from: 0) : anim.reverse(from: 1);
     }
@@ -57,7 +57,7 @@ class IllustrationBuilderState extends State<IllustrationBuilder>
     Animation<double> animation =
         widget.config.enableAnims ? anim : const AlwaysStoppedAnimation(1);
 
-    return Provider<IllustrationBuilderState>.value(
+    return Provider<PagerBuilderState>.value(
         value: this,
         child: Stack(key: ValueKey(animation.value == 0), children: [
           if (widget.config.enableBg) ...widget.bgBuilder(context, animation),

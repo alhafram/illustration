@@ -1,7 +1,7 @@
-class IllustrationConfig {
+class PageConfig {
   static const double _defaultZoom = 1;
 
-  const IllustrationConfig(
+  const PageConfig(
       {this.zoom = _defaultZoom,
       this.isShowing = true,
       this.enableFg = true,
@@ -15,31 +15,31 @@ class IllustrationConfig {
   final bool enableMg;
   final bool enableAnims;
 
-  factory IllustrationConfig.fg(
+  factory PageConfig.fg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableAnims = true}) =>
-      IllustrationConfig(
+      PageConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableAnims: enableAnims,
           enableBg: false,
           enableMg: false);
-  factory IllustrationConfig.bg(
+  factory PageConfig.bg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableAnims = true}) =>
-      IllustrationConfig(
+      PageConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableAnims: enableAnims,
           enableFg: false,
           enableMg: false);
-  factory IllustrationConfig.mg(
+  factory PageConfig.mg(
           {double zoom = _defaultZoom,
           bool isShowing = true,
           bool enableAnims = true}) =>
-      IllustrationConfig(
+      PageConfig(
           zoom: zoom,
           isShowing: isShowing,
           enableAnims: enableAnims,

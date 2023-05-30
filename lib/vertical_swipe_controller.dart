@@ -1,4 +1,4 @@
-part of 'home_screen.dart';
+part of 'pager_view.dart';
 
 class VerticalSwipeController {
   VerticalSwipeController(this.ticker, this.onSwipeComplete);
@@ -46,14 +46,12 @@ class VerticalSwipeController {
           builder,
       Widget? child}) {
     return ValueListenableBuilder<double>(
-      valueListenable: swipeAmt,
-      builder: (_, swipeAmt, __) => ValueListenableBuilder<bool>(
-        valueListenable: isPointerDown,
-        builder: (_, isPointerDown, __) {
-          return builder(swipeAmt, isPointerDown, child);
-        },
-      ),
-    );
+        valueListenable: swipeAmt,
+        builder: (_, swipeAmt, __) => ValueListenableBuilder<bool>(
+            valueListenable: isPointerDown,
+            builder: (_, isPointerDown, __) {
+              return builder(swipeAmt, isPointerDown, child);
+            }));
   }
 
   /// Utility method to wrap a gesture detector and wire up the required handlers.

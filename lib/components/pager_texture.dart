@@ -1,8 +1,8 @@
-import 'package:illustration/illustrations/view_models.dart';
+import 'package:page_controller/components/view_models.dart';
 import 'package:flutter/material.dart';
 
-class IllustrationTexture extends StatelessWidget {
-  const IllustrationTexture(this.path,
+class PagerTexture extends StatelessWidget {
+  const PagerTexture(this.path,
       {Key? key,
       this.scale = 1,
       this.color,
@@ -17,10 +17,10 @@ class IllustrationTexture extends StatelessWidget {
   final String path;
   final Animation<double>? opacity;
 
-  factory IllustrationTexture.withViewModel(
-      {required IllustrationTextureViewModel viewModel,
+  factory PagerTexture.withViewModel(
+      {required PageTextureViewModel viewModel,
       required Animation<double> opacity}) {
-    return IllustrationTexture(viewModel.path,
+    return PagerTexture(viewModel.path,
         scale: viewModel.scale,
         color: viewModel.color,
         flipX: viewModel.flipX,
@@ -37,7 +37,7 @@ class IllustrationTexture extends StatelessWidget {
               scaleY: scale * (flipY ? -1 : 1),
               child: Image.asset(path,
                   repeat: ImageRepeat.repeat,
-                  package: 'illustration',
+                  package: 'page_controller',
                   fit: BoxFit.contain,
                   alignment: Alignment.topCenter,
                   color: color,
